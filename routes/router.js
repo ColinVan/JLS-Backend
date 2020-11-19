@@ -1,0 +1,34 @@
+const router = require("koa-router")();
+const search = require("../controllers/search.js");
+const login = require("../controllers/login.js");
+const register = require("../controllers/register.js");
+const learn = require("../controllers/learn.js");
+const learn_list = require("../controllers/learn_list.js");
+const learn_article = require("../controllers/learn_article.js");
+const learn_userstate = require("../controllers/learn_userstate.js");
+const blog = require("../controllers/blog.js");
+const searchUser_nickName = require("../controllers/searchUser_nickName.js");
+const blog_article = require("../controllers/blog_article.js");
+const addArticle = require("../controllers/addArticle.js");
+const blogComment = require("../controllers/blogComment.js");
+const addComment = require("../controllers/addComment.js");
+const question = require("../controllers/question.js");
+
+module.exports = (app) => {
+    router.post("/api/search", search);
+    router.post("/api/user/login", login);
+    router.post("/api/user/add", register);
+    router.get("/api/chapter/list", learn);
+    router.get("/api/chapter/list/sort/:chapter", learn_list);
+    router.get("/api/chapter/:id", learn_article);
+    router.post("/api/user/progress/:action", learn_userstate);
+    router.get("/api/blog", blog);
+    router.post("/api/user/searchUserNickName", searchUser_nickName);
+    router.get("/api/article/:id", blog_article);
+    router.post("/api/addarticle", addArticle);
+    router.post("/api/comment/list/sort", blogComment);
+    router.post("/api/comment/add", addComment);
+    router.post("/api/question/list/sort", question);
+    app.use(router.routes());
+    app.use(router.allowedMethods());
+};

@@ -1,0 +1,22 @@
+{
+  "name": "jlp_koa",
+  "version": "1.0.0",
+  "description": "a java online learning system webbyhindside using node.js with koa2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack",
+    "build": "webpack"
+  },
+  "author": "ColinVan",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^9.4.0",
+    "mysql": "^2.18.1",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  }
+}
