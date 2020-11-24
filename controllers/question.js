@@ -4,7 +4,7 @@ module.exports = async (ctx, next) => {
     let sql = `SELECT * FROM question WHERE questionType=\"${ctx.request.body.type}\" AND questionStar=\"${ctx.request.body.star}\"`;
     console.log(sql);
     let data = await query(sql);
-    console.log(data);
+    console.log("Query question seccessed.");
     ctx.body = data;
     next();
 }
