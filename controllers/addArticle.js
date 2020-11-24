@@ -1,11 +1,15 @@
 const query = require("../handleDB/query.js");
 const insert = require("../handleDB/insert.js");
+
+const { verify } = require("jsonwebtoken");
+const config = require("../configs/secret.js");
 module.exports = async (ctx, next) => {
     console.log(ctx.request.body);
-    // 通过token获取作者Id
-    let sql1 = `SELECT userId
-                FROM user
-                WHERE password=\"${ctx.request.body.token}\"`;
+    console.log(ctx.request.get("Authorization"));
+    const decoded = verify(ctx.request.get("Authorization"), config.secret);
+    console.log(decoded);
+    let sql1 = `SELECT userId FROM user WHERE userName=\"${decoded.user}\"`;
+    console.log(sql1);
     let userId = await query(sql1);
     console.log("userId is:");
     console.log(userId[0].userId);

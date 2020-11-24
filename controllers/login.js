@@ -1,6 +1,6 @@
 const query = module.require("../handleDB/query.js")
 const { sign } = require("jsonwebtoken");
-const secret = "key";
+const config = require("../configs/secret.js");
 
 module.exports = async (ctx, next) => {
     console.log(ctx.request.body);/*{ username: 'laoba', password: '202cb962ac59075b964b07152d234b70' }*/
@@ -15,7 +15,7 @@ module.exports = async (ctx, next) => {
     if(data && data.length == 1){
         console.log("login request legal, data is:");
         console.log(data);
-        const token = sign({user: requestData.username}, secret, { expiresIn: "1h"});
+        const token = sign({user: requestData.username}, config.secret, { expiresIn: "1h"});
         // ctx.body = data[0].password;
         ctx.body = token;
     }else{
