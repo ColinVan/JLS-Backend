@@ -8,6 +8,7 @@ const learn_article = require("../controllers/learn_article.js");
 const learn_userstate = require("../controllers/learn_userstate.js");
 const blog = require("../controllers/blog.js");
 const searchUser_nickName = require("../controllers/searchUser_nickName.js");
+const blog_articleList = require("../controllers/blog_articleList.js");
 const blog_article = require("../controllers/blog_article.js");
 const addArticle = require("../controllers/addArticle.js");
 const blogComment = require("../controllers/blogComment.js");
@@ -24,6 +25,7 @@ module.exports = (app) => {
     router.post("/api/user/progress/:action", learn_userstate);
     router.get("/api/blog", blog);
     router.post("/api/user/searchUserNickName", searchUser_nickName);
+    router.get("/api/articleList", blog_articleList);
     router.get("/api/article/:id", blog_article);
     router.post("/api/addarticle", addArticle);
     router.post("/api/comment/list/sort", blogComment);
